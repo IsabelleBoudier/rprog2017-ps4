@@ -17,6 +17,26 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
+library(gtrendsR) #also to get google search data 
+library(ggplot2)
+library(tidyverse)
+
+install.packages("gtrendsR")
+vegetarian.trend <- gtrends(c("vegetarian"), gprop = "web", time = "all")[[1]]
+class(vegetarian.trend)
+head(vegetarian.trend)
+
+ggplot(data = vegetarian.trend) + geom_line(mapping = aes(x= date, y = hits))
+?gtrends
+
+##Compare it to vegan
+vegan.trend <- gtrends(c("vegan"), gprop = "web", time = "all")[[1]]
+class(vegan.trend)
+head(vegan.trend)
+
+ggplot(data = vegan.trend) + geom_line(mapping = aes(x= date, y = hits))
+?gtrends
+
 ## Including Plots
 
 You can also embed plots, for example:
